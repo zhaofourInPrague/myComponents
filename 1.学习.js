@@ -1,0 +1,77 @@
+/问题/i
+/*
+1. commonjs2 ??
+*/
+
+/storybook/i
+/*
+1. Introduction.stories.mdx
+   mdx: 可以在md中写jsx
+2. 三个mdx可以让组件变成一个页面去预览
+
+3. 指令 "storybook": "start-storybook -p 6006" ：起一个服务看组件页
+        "build-storybook": "build-storybook" : 打一个静态的html
+*/
+
+/unit单元测试配置/i
+/*
+1. "test:unit": "jest --config unit.jest.js", 添加命令
+2. 根目录下配置 unit.jest.js
+3. 具体组件文件夹下添加 unit/**.test.tsx
+   1. 这个就是具体的test文件内容
+*/
+// unit.jest.js
+module.exports = {
+    verbose: true, // 显示日志
+    testEnvironment: 'jsdom',//运行测试的环境
+    setupFiles: ['./tests/setup.js'], // 必须要有, 下面有描述
+    testMatch: ['**/unit/**/*.(spec|test).(js|ts|jsx|tsx)'], // 检查所有的unit文件夹
+    collectCoverage: true,
+    collectCoverageFrom: [
+      'components/**/*.(js|ts|jsx|tsx)',
+      '!components/**/*.stories.(js|ts|jsx|tsx)',
+      '!components/**/*.(spec|test).(js|ts|jsx|tsx)',
+    ],
+};
+
+/单元测试setup.js/i
+/*
+1. 一定要有的适配, 具体不明
+2. 每次测试之前适配, 增强Enzyme功能
+*/
+
+/e2e测试/i
+/*
+描述: end to end
+1. 针对快照, 也就是最终的渲染结果是否完全一致
+*/
+
+/Enzyme分析/i
+/*
+1. 单元测试和e2e测试都是用setup.js, 各自的*.jest.js配置文件的setupFiles属性配置的都是Enzyme
+2. 所以说明测试内部使用的是Enzyme
+3. 可以换其他的引擎??
+*/
+
+/单元测试setup.js/i
+/*
+1. 一定要有的适配, 具体不明
+2. 每次测试之前适配, 增强Enzyme功能
+*/
+const React = require('react');
+const Enzyme = require('enzyme');
+
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17')
+Enzyme.configure({ adapter: new Adapter() });
+
+/jest-puppeteer.config/
+/*
+1. 加不加都行
+2. 不确定是干什么的
+*/
+
+/发布流程/i 
+/*npm
+1. npm 登录
+   1. 访问 https://www.npmjs.com/
+*/
