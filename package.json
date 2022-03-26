@@ -1,5 +1,5 @@
 {
-  "name": "@django-x/ant",
+  "name": "@django-b/myant",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -22,7 +22,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "http://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org"
   },
   "keywords": ["react", "Component"],
   "author": "Django-x",

@@ -75,3 +75,46 @@ Enzyme.configure({ adapter: new Adapter() });
 1. npm 登录
    1. 访问 https://www.npmjs.com/
 */
+
+/发布的坑/i
+/*
+1. 必须使用官方仓库地址 registry=https://registry.npmjs.org/
+2. 登录npm
+3. package.json
+   1. "name": "@django-b/myant", 这个@django-b一定要和登录用户一致
+   2. "publishConfig": {
+         "access": "public", 一定要是 public
+         "registry": "https://registry.npmjs.org" -- 这个一定要用https
+      },
+*/
+
+/travis.yml文件分析/i
+/*
+language: node_js  语言环境
+node_js: 
+  - "stable"  版本指定, 最新稳定版
+cache:
+  directories:
+  - node_modules 缓存n_m,加快速度
+env:
+  - CI=true 环境变量 CI=true
+install:
+  - yarn config set registry https://registry.npm.taobao.org  
+  - yarn install
+script:
+  - npm run build-storybook
+  - npm version patch    改变版本
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: storybook-static
+    on:
+      branch: master 
+  - provider: npm
+    email: zhang_renyang@126.com  
+    api_key: "$NPM_TOKEN"
+    skip_cleanup: true
+    on:
+      branch: master
+*/
