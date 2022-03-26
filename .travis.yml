@@ -18,10 +18,10 @@ deploy:
     github_token: $GITHUB_TOKEN
     local_dir: storybook-static
     on:
-      branch: master 
+      branch: main 
   - provider: npm
-    email: zhang_renyang@126.com  
+    email: m1325679285@163.com
     api_key: "$NPM_TOKEN"
     skip_cleanup: true
     on:
-      branch: master
+      branch: main

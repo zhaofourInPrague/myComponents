@@ -118,3 +118,26 @@ deploy:
     on:
       branch: master
 */
+
+
+/关联ci流程/i
+/*
+1. github关联https://app.travis-ci.com/account/repositories
+   1. 具体怎么关联上的忘了??
+2. 生成npm-token:
+   1. npm头像点击选择 access-token
+   2. generate new token
+   3. 选择 publish + 创建 -> 生成 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
+
+3. 生成github-token:
+   1. github点击头像 -> settings -> Developer settings
+      -> Personal access tokens
+   2. genetate new token
+      所有选项勾选 - > 生成 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
+
+4. travis-ci添加token
+   1. 点击对应的仓库的settings按钮
+   2. Environment Variables一栏下填写token
+      NPM_TOKEN + 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
+      GITHUB_TOKEN + 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
+*/
